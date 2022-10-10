@@ -1,0 +1,11 @@
+--------------
+nest g mi /users/middlewares/example
+
+=> src/users.......
+--------------
+
+
+ use(req: Request, res: Response, next: NextFunction) {
+    console.log('Example Middleware');
+    next();
+  }
