@@ -65,8 +65,8 @@ export class UsersController {
 
     @Get()
     getUsers(@Query('sortDesc' , ParseBoolPipe) sortDesc: boolean) {
-        console.log(sortDesc);
-        // return {sortBy };
+        console.log(sortBy);
+        return {sortBy };
     }
 
 

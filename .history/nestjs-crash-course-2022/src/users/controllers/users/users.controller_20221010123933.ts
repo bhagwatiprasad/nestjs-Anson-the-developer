@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseBoolPipe, ParseIntPipe, Post, Query, Req, Res, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Req, Res, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CreateUserDto } from 'src/users/dtos/CreateUserDto.dto';
 
@@ -44,29 +44,16 @@ export class UsersController {
     //     console.log(request.params)
     //   }
 
-    // @Get(':id/:postId')
-    // getUserById(@Param('id') id:string , @Param('postId') postId: string){
-    //   console.log(id , postId);
-    //   return {id};
-    // }
-
-
-      @Get(':id')
-      getUserById(@Param('id' , ParseIntPipe) id: string ){
-        console.log(id);
-        return { id };
-      }
-
-    // @Get()
-    // getUsers(@Query('sortBy') sortBy: string) {
-    //     console.log(sortBy);
-    //     return {sortBy };
-    // }
+    @Get(':id/:postId')
+    getUserById(@Param('id') id:string , @Param('postId') postId: string){
+      console.log(id , postId);
+      return {id};
+    }
 
     @Get()
-    getUsers(@Query('sortDesc' , ParseBoolPipe) sortDesc: boolean) {
-        console.log(sortDesc);
-        // return {sortBy };
+    getUsers(@Query('sortBy') sortBy: string) {
+        console.log(sortBy);
+        return {sortBy };
     }
 
 
