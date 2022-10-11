@@ -16,6 +16,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { CreateUserDto } from 'src/users/dtos/CreateUserDto.dto';
+import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user.pipe';
 import { UsersService } from 'src/users/services/users/users.service';
 
 // 'users' below is the route on which controller is registered
@@ -30,6 +31,7 @@ export class UsersController {
   @Get()
   getUsers() {
     // console.log(sortDesc);
+    console.log('getUsers controller')
     return this.userService.fetchUsers();
     // return {sortBy };
   }
@@ -50,8 +52,8 @@ export class UsersController {
   }
 
   @Post('create')
-  @UsePipes(new ValidationPipe())
-  createUser(@Body() userData: CreateUserDto) {
+  @UsePipes(new ValidationPipe()) // new ValidationPipe validate and generate errors according to CreateUserDto. 
+  createUser(@Body(ValidateCreateUserPipe) userData: CreateUserDto) {
     console.log(userData);
     // const fakeUsers = this.userService.createUser(userData);
     return this.userService.createUser(userData);

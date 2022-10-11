@@ -9,3 +9,8 @@ nest g mi /users/middlewares/example
     console.log('Example Middleware');
     next();
   }
+
+  --------------------------------------------
+  parseboolpipe can be applied to validate query params
+  -------------------------------------------------------
+  Dtos can be interface as well as class. Usually used for @Body validation
